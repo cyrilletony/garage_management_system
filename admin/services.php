@@ -1,5 +1,7 @@
 <?php 
-include('head.php')
+include('authenticate.php'); 
+include('head.php');
+
 ?>
 <style type="text/css">
 	.imge{
@@ -26,12 +28,11 @@ include('head.php')
 	<div class="container row" style="padding: 5px;">
 	<?php
 	include("../db.php");
-	$query = 'SELECT * FROM services';
-	$results = mysqli_query($conn,$query);
-	$rows = mysqli_num_rows($results);
-	if ($rows > 0) {
-	for ($rows > 0 ; $rows--;) { 
-	    $row = mysqli_fetch_array($results);
+	$query = $con->prepare('SELECT * FROM services');
+	$query->execute();
+
+	foreach ($query->fetchAll() as $row) { 
+	    
 	    $id = $row['id'];
 	    $title = $row['Name'];
 	    $image = $row['image'];
@@ -51,7 +52,7 @@ include('head.php')
 	                </div>
 	            </div>
 	        </div>";
-	    }
+	    
 	}
 	?>
 

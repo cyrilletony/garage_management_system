@@ -1,15 +1,15 @@
 <?php 
-include('head.php')
+include('authenticate.php'); 
+include('head.php');
 ?>
 <h3 style="font-weight: bold;">About Us</h3>
 <hr>
 <?php
 $id = isset($_GET['id'])?$_GET['id']:'';
 include("../db.php");
-$query = "SELECT * , MONTHNAME(date) as dm,YEAR(date) as dy,DAY(date) as dd FROM blog WHERE id = '$id'";
-$results = mysqli_query($conn,$query);
-
-$row = mysqli_fetch_array($results);
+$query = $con->prepare("SELECT * , MONTHNAME(date) as dm,YEAR(date) as dy,DAY(date) as dd FROM blog WHERE id = '$id'");
+$query->execute();
+$row = $query->fetch();
 $id = $row['id'];
 $title = $row['comment'];
 $image = $row['image'];

@@ -1,5 +1,7 @@
-<?php 
-include('head.php')
+<?php
+include('authenticate.php'); 
+include('head.php');
+
 ?>
 <h3 style="font-weight: bold;">Dashboard</h3>
 <?php
@@ -19,7 +21,7 @@ include('head.php')
 window.onload = function () {
 
 var chart = new CanvasJS.Chart("chartContainer", {
-    theme: "light2", // "light2", "dark1", "dark2"
+    theme: "dark1", // "light2", "dark1", "dark2"
     animationEnabled: true, // change to true      
     title:{
         text: "Bar Chart"
@@ -34,10 +36,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 });
 chart.render();
 var chart = new CanvasJS.Chart("chartContainer2", {
-    theme: "light2", // "light2", "dark1", "dark2"
+    theme: "dark1", // "light2", "dark1", "dark2"
     animationEnabled: true, // change to true      
     title:{
-        text: "Line Graph"
+        text: "Spline Graph"
     },
     data: [
     {
@@ -49,22 +51,22 @@ var chart = new CanvasJS.Chart("chartContainer2", {
 });
 chart.render();
 var chart = new CanvasJS.Chart("chartContainer3", {
-    theme: "light2", // "light2", "dark1", "dark2"
+    theme: "dark1", // "light2", "dark1", "dark2"
     animationEnabled: true, // change to true      
     title:{
-        text: "Pie Chart"
+        text: "Line Chart"
     },
     data: [
     {
         // Change type to "bar", "area", "spline", "pie",etc.
-        type: "pie",
+        type: "line",
         dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
     }
     ]
 });
 chart.render();
 var chart = new CanvasJS.Chart("chartContainer4", {
-    theme: "light2", // "light2", "dark1", "dark2"
+    theme: "dark1", // "light2", "dark1", "dark2"
     animationEnabled: true, // change to true      
     title:{
         text: "Area Chart"

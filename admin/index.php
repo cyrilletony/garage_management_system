@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if (isset($_SESSION['active'])) {
+	header("Location:index1.php");
+}
+else{
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +24,17 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body style="background-color: #666666;">
-	
+	<style type="text/css">
+        #failed{
+            display: none;
+        }
+    </style>
+    <?php
+        $remark = isset($_GET['login'])?$_GET['login']:'';
+        if ($remark == 'failed') {
+            echo "<style type=\"text/css\">#failed{display: block;}</style>";
+        }
+    ?>
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -53,8 +70,9 @@
 								Forgot Password?
 							</a>
 						</div>
+
 					</div>
-			
+					<div id="failed" class="alert alert-danger col-12">Wrong email or password!</div>
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
@@ -62,21 +80,7 @@
 						</button>
 					</div>
 					
-					<div class="text-center p-t-46 p-b-20">
-						<span class="txt2">
-							or sign up using
-						</span>
-					</div>
-
-					<div class="login100-form-social flex-c-m">
-						<a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
-							<i class="fa fa-facebook-f" aria-hidden="true"></i>
-						</a>
-
-						<a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
-							<i class="fa fa-twitter" aria-hidden="true"></i>
-						</a>
-					</div>
+					
 				</form>
 
 				<div class="login100-more" style="background-image: url('../assets/images/184574324_239508547953221_2873074828986916359_n.jpg');">
@@ -101,3 +105,7 @@
 
 </body>
 </html>
+<?php 
+
+}
+ ?>

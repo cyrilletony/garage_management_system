@@ -1,4 +1,5 @@
 <?php 
+include('authenticate.php'); 
 include('head.php');
 include("../db.php");
 ?>
@@ -13,11 +14,16 @@ include("../db.php");
 <hr>
 <?php
 $id = isset($_GET['id'])?$_GET['id']:'';
-
-$query = "SELECT id,name,MONTHNAME(date) as dm,YEAR(date) as dy,DAY(date) as dd,email,carmodel,phone,issue,time,image,description FROM appointments WHERE id = '$id'";
-$results = mysqli_query($conn,$query);
-
-$row = mysqli_fetch_array($results);
+$qi = "UPDATE appointments SET status='True' WHERE id = '$id'";
+$update = $con->prepare($qi);
+$update->execute();
+$query = $con->prepare("SELECT id,name,MONTHNAME(date) as dm,YEAR(date) as dy,DAY(date) as dd,email,carmodel,phone,issue,time,image,description FROM appointments WHERE id = '$id'");
+//$results = mysqli_query($conn,$query);
+$query->execute();
+$result = $query->setFetchMode(PDO::FETCH_ASSOC);
+$row = $query->fetch();
+//$row = $rows[0];
+//$row = mysqli_fetch_array($results);
 $id = $row['id'];
 $name = $row['name'];
 $image = $row['image'];
@@ -55,5 +61,6 @@ $time = $row['time'];
 </div>
 </div>
 <?php 
+
 include('tail.php');
 ?>

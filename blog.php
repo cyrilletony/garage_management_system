@@ -36,19 +36,17 @@
 </section>
 <?php
     include("db.php");
-    $query = 'SELECT * , MONTHNAME(date) as dm,YEAR(date) as dy,DAY(date) as dd FROM blog';
-    $results = mysqli_query($conn,$query);
-    $rows = mysqli_num_rows($results);
-    if ($rows > 0) {
-    for ($rows > 0 ; $rows--;) { 
-        $row = mysqli_fetch_array($results);
+    $query = $con->prepare('SELECT * , MONTHNAME(date) as dm,YEAR(date) as dy,DAY(date) as dd FROM blog');
+    $query->execute();
+    foreach ($query->fetchAll() as $row) {
         $id = $row['id'];
         $title = $row['comment'];
         $image = $row['image'];
         $name = $row['name'];
         $date = $row['dd']." ".$row['dm']." ".$row['dy'];
         $description = $row['description'];
-        ?>
+      
+    ?>
 <section data-bs-version="5.1" class="image1 cid-sR0nceaKzP mbr-fullscreen" id="item<?php echo $id; ?>">
     
 
@@ -76,7 +74,7 @@
 </section>
 <?php 
 }
-}
+
  ?>
 <section data-bs-version="5.1" class="form4 cid-sQyYIdCVvL mbr-fullscreen" id="form4-16">
     <div class="container">

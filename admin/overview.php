@@ -1,5 +1,6 @@
 <?php 
-include('head.php')
+include('authenticate.php'); 
+include('head.php');
 ?>
 <style type="text/css">
 	#frame{

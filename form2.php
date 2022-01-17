@@ -53,7 +53,7 @@ if ($uploadOk == 0) {
   }
 }
 
-$q = "INSERT INTO services(Name,image,description) VALUES('$name','$target_file','$description')";
-$conn->query($q);
+$q = $con->prepare("INSERT INTO services(Name,image,description) VALUES('$name','$target_file','$description')");
+$Q->execute();
 //header("Location:admin/services.php")
 ?>

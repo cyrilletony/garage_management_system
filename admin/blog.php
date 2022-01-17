@@ -1,5 +1,6 @@
 <?php 
-include('head.php')
+include('authenticate.php'); 
+include('head.php');
 ?>
 <table id="tb" style="width: 100%;">
 <tr>
@@ -14,12 +15,11 @@ include('head.php')
 <div class="container row" style="padding: 5px;">
 	<?php
 	include("../db.php");
-	$query = 'SELECT * , MONTHNAME(date) as dm,YEAR(date) as dy,DAY(date) as dd FROM blog';
-	$results = mysqli_query($conn,$query);
-	$rows = mysqli_num_rows($results);
+	$query = $con->prepare('SELECT * , MONTHNAME(date) as dm,YEAR(date) as dy,DAY(date) as dd FROM blog');
+	$query->execute();
+	$rows = $query->rowCount();
 	if ($rows > 0) {
-	for ($rows > 0 ; $rows--;) { 
-	    $row = mysqli_fetch_array($results);
+	foreach ($query->fetchAll() as $row) {
 	    $id = $row['id'];
 	    $title = $row['comment'];
 	    $image = $row['image'];

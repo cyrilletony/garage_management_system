@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="assets/dropdown/css/style.css">
   <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
@@ -28,6 +29,87 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
+  <style>
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  transition: 1.5s;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+   from {opacity: .4;
+    left: 0;
+
+  } 
+  to {opacity: 1;
+    left: 100%;
+  }
+}
+
+@keyframes fade {
+  from {opacity: .4;
+    left: 0;
+
+  } 
+  to {opacity: 1;
+    left: 100%;
+  }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
+<script>
+var slideIndex = 1;
+//showSlides(slideIndex);
+
+function plusSlides(n) {
+  
+
+}
+var i= 0;
+setInterval(function(){
+  //showSlides(slideIndex += 1);
+  
+  var images = ["assets/images/image-612x408.jpg","assets/images/45-500x313.jpg","assets/images/vlcsnap-2020-04-12-20h24m27s582-1281x534.png"]
+  var place = document.getElementById('images');
+  place.setAttribute('src',images[i])
+  i++;
+  if (i == images.length) {
+    i = 0;
+  }
+  },5000)
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+ 
+  
+  if (n > slides.length) {
+    slideIndex = 1
+}    
+  if (n < 1) {
+    slideIndex = slides.length
+}
+  for (i = 0; i < slides.length; i++) {
+      slides[slideIndex-1].style.display = "block"; 
+      slides[i].style.display = "none";  
+  }
+  
+  // 
+  
+
+}
+</script>
 </head>
   
   
@@ -42,19 +124,23 @@
     ?>
 
 </section>
-<section  style="background-image: url('assets/images/image-612x408.jpg');" id='header1-f'>
-    <div class="row" style="">
+<section   class="" id='header1-f'>
+    <div class="row" style="color: white;">
+        <br>
     <div class="mbr-overla col-lg-12 col-md" style="opacity: 0.5; background-color: rgb(53, 53, 53);"></div>
-
-    <div class="align-center container col-lg-12 col-md" style="height:500px;top:150px">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-8">
+    
+    <div class="align-center container col-lg-12 col-md bg-dark" id="mainp" style="background-color: black;">
+        <div class="row justify-content-center" style="">
+            <img class="mySlides fade" id="images" style="width: 100%; top: -100px; height: 700px;" src="assets/images/image-612x408.jpg">
+            
+            <div class="col-12 col-lg-8" style="z-index: 5;position: absolute; top: 20px;">
                 <h1 class="mbr-section-title mbr-fonts-style mb-3 display-2 animate__backInRight"><strong>Hermit Garage</strong></h1>
                 <h2 class="mbr-section-title mbr-fonts-style mb-3 display-2 animate__backInRight">Professional Car Service Providers</h2>
                 
                 <p class=" display-7 animate__backInRight" style="color: tomato;">// ANY KIND OF CAR REPAIR AND MAINTENANCE YOU WOULD WANT!//</p>
-                <div class="mbr-section-btn mt-3"><a class="btn btn-danger display-4" href="index.php#form4-y"> CONTACT US</a></div>
+                <div class="mbr-section-btn mt-3"><button id="nm" style="border-radius: 50px;" class="btn btn-dark display-4" onclick="getLocation()">Get Rescued</button><a id="nm2" class="btn btn-danger display-4" href="index.php#form4-y"> CONTACT US</a></div>
             </div>
+           
         </div>
     </div>
     <style> 
@@ -76,10 +162,35 @@
   100% {color:red; left:0px; top:0px;}
 }
 </style>
-<div style="visibility: hidden; height: 0px;"></div>
-<div class="col-lg-12 col-md" style="width: 100%; display: flex; justify-content: center; height: 100px;">
+<div style="visibility: hidden; height: 20px;"></div>
+ <div class="row" id="btns" style="z-index: 5;margin: 0px 10px;padding: 0px 10px;">
+                <a href="" class="col-md col-lg"><div id="btn-bl" class="row">
+                    <div class="col-7" style="margin:auto;"><h6 style="font-weight: bold;">Hello Hermit User</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetur </p></div>
+                    <div class="col-3" style="font-size: 30px; display: flex; justify-content: center; margin: auto;"><i class="fa fa-cog"></i></div>
+                </div></a>
+                <button onclick="getLocation()" style="text-align: left;" class="col-md col-lg"><div id="btn-bl" class="row">
+
+                    <div class="col-7" style="margin:auto;"><h6 style="font-weight: bold;"><br>Ask for Rescue</h6>
+                        <p>Request towing, emergency rescue ...</p></div>
+                    <div class="col-3" style="font-size: 30px; display: flex; justify-content: center; margin: auto;"><i class="fa fa-bullhorn" aria-hidden="true">  </i></div>
+                </div></button>
+                <a href="" class="col-md col-lg"><div id="btn-bl" class="row">
+                    <div class="col-7" style="margin:auto;"><h6 style="font-weight: bold;">Hello Hermit User</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetur </p></div>
+                    <div class="col-3" style="font-size: 30px; display: flex; justify-content: center; margin: auto;"><i class="fas fa-car-mechanic"></i></div>
+                </div></a>
+                <a href="appointment.php" class="col-md col-lg"><div id="btn-bl" class="row">
+                    <div class="col-7" style="margin:auto;">
+                        <h6 style="font-weight: bold;">Request a Quote</h6>
+                        <p>Make an a appointment with us.</p></div>
+                    <div class="col-3" style="font-size: 30px; display: flex; justify-content: center; margin: auto;"><i class="fa fa-calendar"></i></div>
+                </div></a>
+            </div>
+<!--<div class="col-lg-12 col-md" style="width: 100%; display: flex; justify-content: center; height: 100px;">
     <div id="anime" style="font-size: 40px;"><i class="fa fa-arrow-down"></i></div>
-</div>
+</div>-->
+
 </section>
 
 <section data-bs-version="5.1" class="content2 cid-sQkUx6sLQR mbr-fullscreen bg-light" id="whoweare">
@@ -88,24 +199,23 @@
     <div class="container">
         <div class="content-wrapper">
             <div class="row align-items-center">
-                <div class="col-12 col-lg-6">
+                <div class="col-md col-lg-6">
                     <div class="image-wrapper">
                         <img src="assets/images/184349078_239613284609414_1046597693623168504_n.jpg" alt="Mobirise">
                     </div>
                 </div>
-                <div class="col-12 col-lg">
+                <div class="col-md col-lg-6">
                     <div class="text-wrapper" >
                         <h6 class="card-title mbr-fonts-style display-5">
                             <strong>Hermit Garage</strong>
                         </h6>
                             
                         <p class="mbr-text mbr-fonts-style mb-4 display-4">
-                            <strong>WHO WE ARE</strong><br><br>
+                            <strong>WHO WE ARE</strong><br>
                             Hermit Garage is an institution offering services for General Auto Repair & Maintenance and body painting services. Our services are a full guarantee for the wellbeing of your vehicle.  We Inspect vehicle computer and electronic systems to repair, maintain and upgrade. Car sale on behalf. We also do car body painting. Trust us with your car
                             and visit us today.
                             <br>
-                            <br>
-                             <strong>WHAT WE OFFER</strong><br>
+                             <strong>WHAT WE OFFER</strong>
                              <br>
                              We use only genuine parts, repair technics, and tools! We are ready to deal with any car repair needed or vehicle issues you may be experiencing. We have highly skilled technicians who are ready to deal you’re your car repair and maintenance and cater for all your car needs and requirements.
                             </p>
@@ -142,12 +252,11 @@
         <div class="row mt-4">
            <?php 
 include("db.php");
-$query = 'SELECT * FROM services';
-$results = mysqli_query($conn,$query);
-$rows = mysqli_num_rows($results);
-if ($rows > 0) {
-    for ($rows > 0 ; $rows--;) { 
-        $row = mysqli_fetch_array($results);
+$query = $con->prepare('SELECT * FROM services');
+$query->execute();
+
+foreach($query->fetchAll() as $row) { 
+        
         $id = $row['id'];
         $title = $row['Name'];
         $image = $row['image'];
@@ -166,7 +275,7 @@ if ($rows > 0) {
                     </div>
                 </div>
             </div>";
-        }
+        
     }
 ?>
             

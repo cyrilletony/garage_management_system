@@ -1,5 +1,6 @@
 <?php 
-include('head.php')
+include('authenticate.php'); 
+include('head.php');
 ?>
 <h3 style="font-weight: bold;">About Us</h3>
 <hr>

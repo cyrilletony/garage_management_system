@@ -1,5 +1,6 @@
 <?php 
-include('head.php')
+include('authenticate.php'); 
+include('head.php');
 ?>
 <style type="text/css">
 	.imge{
@@ -15,10 +16,9 @@ include('head.php')
 <?php
 include("../db.php");
 $id = isset($_GET['id'])?$_GET['id']:'';
-$query = "SELECT * FROM services WHERE id = '$id'";
-$results = mysqli_query($conn,$query);
-
-$row = mysqli_fetch_array($results);
+$query = $con->prepare("SELECT * FROM services WHERE id = '$id'");
+$query->execute();
+$row = $query->fetch();
 $id = $row['id'];
 $title = $row['Name'];
 $image = $row['image'];
